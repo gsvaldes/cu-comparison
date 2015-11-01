@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from rest_framework import viewsets
 
-# Create your views here.
+from models import Business
+from serializers import *
+
+
+class BusinessViewSet(viewsets.ModelViewSet):
+
+    queryset = Business.objects.all()
+    serializer_class = BusinessSerializer
