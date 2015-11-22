@@ -17,9 +17,12 @@ class Business(models.Model):
 
 
 class Location(models.Model):
-    business = models.ForeignKey(Business, verbose_name='business_location')
+    business = models.ForeignKey(Business, verbose_name='business')
     address = models.CharField(max_length=255, default='')
     city = models.CharField(max_length=100, default='Austin')
     state = models.CharField(max_length=100, default='Texas')
     zip_code = models.CharField(max_length=5, default='')
     created = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return "{0}  {1}".format(self.address, self.zip_code)
